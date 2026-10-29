@@ -170,6 +170,7 @@ void loop()
 
 ---
 Basic Functions
+
 Initialization
 
 ```cpp
