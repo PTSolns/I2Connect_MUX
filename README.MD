@@ -169,8 +169,8 @@ void loop()
 ```
 
 ---
-## Basic Functions
-## Initialization
+Basic Functions
+Initialization
 
 ```cpp
 // Initializes MUX at default address 0x70 and closes all ports
