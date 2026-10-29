@@ -1,5 +1,3 @@
-
-```markdown
 # PTSolns *I2Connect: MUX* Library
 
 ![Arduino Library](https://img.shields.io/badge/Arduino-Library-blue)
