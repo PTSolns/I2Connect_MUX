@@ -90,3 +90,96 @@ The *I2Connect: MUX* module uses a default I2C address of:
 
 ```text
 0x70
+```
+This address can be modified from 0x70 up to 0x77 by closing the A0, A1, and A2 solder jumpers located on the back of the PCB.
+
+By changing these hardware jumpers, up to eight MUX boards can be daisy-chained onto a single main I2C bus, expanding a single microcontroller to support up to 32 isolated downstream channels.
+---
+
+## *PTSolns IDE*
+
+The [*PTSolns IDE*](https://ptsolns.com/ide) is a free desktop application for programming PTSolns microcontroller development boards and compatible Arduino platforms.
+
+This library is available directly through both the PTSolns IDE Library Manager and the Arduino Library Manager.
+
+To install:
+
+1. Open the PTSolns IDE (or Arduino IDE).
+2. Open the Library Manager.
+3. Search for:
+
+```text
+I2Connect_MUX
+```
+4. Click Install.
+
+Features of the [*PTSolns IDE*](https://ptsolns.com/ide) include:
+
+* Integrated board management
+* Built in serial monitor
+* Library management
+* Example project browser
+* Support for over 8,500 third party libraries
+* Built in CH340 USB driver support
+* Open source and community driven
+
+The [*PTSolns IDE*](https://ptsolns.com/ide) can be used alongside the Arduino IDE and supports many PTSolns development boards out of the box.
+
+---
+
+## Quick Start
+
+```cpp
+#include <Wire.h>
+#include <PTSolns_I2Connect_MUX.h>
+
+PTSolns_I2Connect_MUX mux;
+const uint8_t SENSOR_ADDRESS = 0x3C; // Example OLED address
+
+void setup()
+{
+    Serial.begin(115200);
+    Wire.begin();
+
+    if (mux.begin()) {
+        Serial.println("MUX initialized!");
+    } else {
+        Serial.println("Failed to find MUX.");
+        while(1);
+    }
+}
+
+void loop()
+{
+    // Talk to the screen attached to MUX1
+    mux.setPort(1);
+    Wire.beginTransmission(SENSOR_ADDRESS);
+    // ... send data to display 1 ...
+    Wire.endTransmission();
+    
+    // Switch over and talk to the screen attached to MUX2
+    mux.setPort(2);
+    Wire.beginTransmission(SENSOR_ADDRESS);
+    // ... send data to display 2 ...
+    Wire.endTransmission();
+    
+    delay(100);
+}
+```
+
+---
+## Basic Functions
+##Initialization
+
+```cpp
+// Initializes MUX at default address 0x70 and closes all ports
+mux.begin();
+```
+##Routing I2C Traffic
+```cpp
+// Open the MUX3 port for downstream communication
+mux.setPort(3);
+
+// Secure the main bus by disconnecting all downstream modules
+mux.disableAllPorts();
+```
