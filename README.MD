@@ -185,3 +185,52 @@ mux.setPort(3);
 // Secure the main bus by disconnecting all downstream modules
 mux.disableAllPorts();
 ```
+
+---
+
+## Library Functions
+
+| Function          | Description                              |
+| ----------------- | -----------------------------------------|
+| begin()           | Initialize the I2C bus and disable all channels to start fresh          |
+| setPort()        | Open a specific downstream channel (1 through 4)|
+| disableAllPorts()       |Isolate the main bus by closing all downstream channels|
+| getActivePorts()       |Retrieve the raw bitmask of currently open channels|
+
+---
+
+## Typical Applications
+
+* Resolving address collisions for identical components (e.g., multiple OLEDs, sensors).
+* Expanding the total number of devices a microcontroller can support.
+* Isolating faulty or noisy I2C components from the main bus.
+* Creating modular, hot-swappable sensor networks.
+
+---
+
+
+## Documentation & Resources
+
+Additional resources are available through the PTSolns Documentation Repository, including:
+
+* Datasheets
+
+* Schematics
+
+* Pinout diagrams
+
+* 3D models
+
+* Fritzing files
+
+* Tutorials
+
+* Example projects
+
+* [PTSolns Documentation Repository](https://docs.ptsolns.com)
+
+* [PTSolns Website](https://ptsolns.com)
+
+* [Contact Support](https://ptsolns.com/contact-us)
+
+* [PTSolns IDE](https://ptsolns.com/ide)
