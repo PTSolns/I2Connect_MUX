@@ -169,7 +169,7 @@ void loop()
 ```
 
 ---
-Basic Functions
+## Basic Functions
 
 Initialization
 
@@ -177,7 +177,7 @@ Initialization
 // Initializes MUX at default address 0x70 and closes all ports
 mux.begin();
 ```
-## Routing I2C Traffic
+Routing I2C Traffic
 ```cpp
 // Open the MUX3 port for downstream communication
 mux.setPort(3);
