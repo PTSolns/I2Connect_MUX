@@ -92,7 +92,6 @@ The *I2Connect: MUX* module uses a default I2C address of:
 0x70
 ```
 This address can be modified from 0x70 up to 0x77 by closing the A0, A1, and A2 solder jumpers located on the back of the PCB.
-
 By changing these hardware jumpers, up to eight MUX boards can be daisy-chained onto a single main I2C bus, expanding a single microcontroller to support up to 32 isolated downstream channels.
 ---
 
